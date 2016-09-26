@@ -1,0 +1,36 @@
+reset
+set terminal postscript enhanced color 20
+set output 'testingplot1.eps'
+
+set xlabel '# of queries'
+set ylabel 'DHT lookups per query'
+
+plot 	'./traffic-dyn-2.txt' u 6:(($8-9*5000)/$6) w lp lw 6, \
+		'./traffic-dyn-3.txt' u 6:(($8-9*5000)/$6) w lp lw 6, \
+		'./traffic-dyn-4.txt' u 6:(($8-9*5000)/$6) w lp lw 6
+
+
+reset
+set terminal postscript enhanced color 20
+set output 'testingplot2.eps'
+
+set xlabel '# of queries'
+set ylabel 'DHT lookups per query'
+
+plot 	'./traffic-nopush-2.txt' u 6:(($8-9*5000)/$6) title 'str0' w lp lw 6, \
+		'./traffic-nopush-3.txt' u 6:(($8-9*5000)/$6) title 'str1' w lp lw 6, \
+		'./traffic-nopush-4.txt' u 6:(($8-9*5000)/$6) title 'str2' w lp lw 6
+
+
+reset
+set terminal postscript enhanced color 20
+set output 'testingplot3.eps'
+
+set xlabel 'Node'
+set ylabel 'Load'
+
+
+
+plot './loaddist-nopush-2.txt' u 3:7 w lp lw 6, \
+	 './loaddist-nopush-2.txt' u 3:11 w lp lw 6	
+
